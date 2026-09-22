@@ -1,0 +1,1290 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Premium portfolio website template for a professional, creative, and modern personal brand."
+    />
+    <title>Your Name | Portfolio</title>
+    <style>
+      :root {
+        --bg: #07111f;
+        --bg-2: #0d1b2a;
+        --panel: rgba(15, 23, 42, 0.78);
+        --panel-strong: #101828;
+        --card: rgba(15, 23, 42, 0.72);
+        --primary: #7c3aed;
+        --primary-2: #22d3ee;
+        --accent: #f59e0b;
+        --text: #e5eefb;
+        --muted: #9aa9c2;
+        --line: rgba(148, 163, 184, 0.18);
+        --success: #34d399;
+        --shadow: 0 24px 60px rgba(2, 6, 23, 0.55);
+        --radius: 24px;
+      }
+
+      body.light {
+        --bg: #eef4ff;
+        --bg-2: #deeafe;
+        --panel: rgba(255, 255, 255, 0.82);
+        --panel-strong: #f8fafc;
+        --card: rgba(255, 255, 255, 0.9);
+        --primary: #6d28d9;
+        --primary-2: #14b8a6;
+        --text: #0f172a;
+        --muted: #475569;
+        --line: rgba(15, 23, 42, 0.12);
+        --success: #14b86a;
+        --shadow: 0 24px 60px rgba(15, 23, 42, 0.12);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background:
+          radial-gradient(circle at top left, rgba(124, 58, 237, 0.14), transparent 35%),
+          radial-gradient(circle at top right, rgba(34, 211, 238, 0.12), transparent 40%),
+          linear-gradient(180deg, var(--bg) 0%, var(--bg-2) 100%);
+        color: var(--text);
+        line-height: 1.6;
+        overflow-x: hidden;
+      }
+
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        background:
+          radial-gradient(circle at 15% 20%, rgba(124, 58, 237, 0.22), transparent 22%),
+          radial-gradient(circle at 80% 15%, rgba(34, 211, 238, 0.2), transparent 25%),
+          radial-gradient(circle at 60% 72%, rgba(16, 185, 129, 0.12), transparent 22%),
+          linear-gradient(180deg, rgba(3, 7, 12, 0.25), rgba(3, 7, 12, 0.68));
+        z-index: 0;
+      }
+
+      body::after {
+        content: "";
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        background-image:
+          linear-gradient(rgba(103, 232, 249, 0.05) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(103, 232, 249, 0.04) 1px, transparent 1px);
+        background-size: 32px 32px;
+        mask-image: radial-gradient(circle at center, black 30%, transparent 100%);
+        animation: driftBackground 18s ease-in-out infinite alternate;
+        z-index: 0;
+      }
+
+      .page-shell {
+        position: relative;
+        z-index: 1;
+      }
+
+      .matrix-stream {
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        overflow: hidden;
+        z-index: 0;
+        opacity: 0.55;
+      }
+
+      .matrix-stream span {
+        position: absolute;
+        top: -20%;
+        width: 12px;
+        height: 170px;
+        color: rgba(103, 232, 249, 0.6);
+        font-size: 11px;
+        line-height: 1.5;
+        writing-mode: vertical-rl;
+        text-orientation: mixed;
+        animation: matrixFlow linear infinite;
+        filter: drop-shadow(0 0 8px rgba(103, 232, 249, 0.7));
+      }
+
+      .matrix-stream span:nth-child(odd) {
+        color: rgba(56, 189, 248, 0.65);
+      }
+
+      .matrix-stream span:nth-child(3n) {
+        color: rgba(34, 197, 94, 0.65);
+      }
+
+      @keyframes matrixFlow {
+        0% {
+          transform: translate3d(0, -120%, 0) scaleY(0.8);
+          opacity: 0;
+        }
+        12% { opacity: 1; }
+        100% {
+          transform: translate3d(0, 120vh, 0) scaleY(1.2);
+          opacity: 0;
+        }
+      }
+
+      @keyframes pulseGlow {
+        0% { transform: scale(0.9) translate3d(0, 0, 0); opacity: 0.7; }
+        100% { transform: scale(1.14) translate3d(-10px, 12px, 0); opacity: 1; }
+      }
+
+      @keyframes driftBackground {
+        0% { transform: translate3d(0, 0, 0) scale(1); }
+        50% { transform: translate3d(10px, 14px, 0) scale(1.05); }
+        100% { transform: translate3d(-12px, 8px, 0) scale(1.08); }
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      img {
+        max-width: 100%;
+        display: block;
+      }
+
+      .container {
+        width: min(1180px, calc(100% - 32px));
+        margin: 0 auto;
+      }
+
+      .section {
+        padding: 96px 0;
+      }
+
+      .section-header {
+        margin-bottom: 40px;
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        color: var(--primary-2);
+        font-size: 0.8rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        font-weight: 700;
+      }
+
+      .eyebrow::before {
+        content: "";
+        display: inline-block;
+        width: 32px;
+        height: 1px;
+        background: linear-gradient(90deg, var(--primary-2), transparent);
+      }
+
+      h1, h2, h3, h4, p {
+        margin-top: 0;
+      }
+
+      h1 {
+        font-size: clamp(2.8rem, 5vw, 5rem);
+        line-height: 1.05;
+        letter-spacing: -0.06em;
+        margin-bottom: 18px;
+      }
+
+      h2 {
+        font-size: clamp(2rem, 3vw, 3rem);
+        line-height: 1.1;
+        letter-spacing: -0.05em;
+        margin-bottom: 14px;
+      }
+
+      h3 {
+        font-size: 1.2rem;
+        margin-bottom: 8px;
+      }
+
+      p {
+        color: var(--muted);
+        font-size: 1rem;
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        background: rgba(255, 255, 255, 0.02);
+        color: var(--text);
+        border-radius: 999px;
+        padding: 14px 22px;
+        font-weight: 600;
+        transition: all 0.25s ease;
+        cursor: pointer;
+      }
+
+      .btn:hover {
+        transform: translateY(-2px);
+        box-shadow: var(--shadow);
+      }
+
+      .btn.primary {
+        background: linear-gradient(135deg, var(--primary), #a855f7 50%, var(--primary-2));
+        border: none;
+      }
+
+      .btn.secondary {
+        background: rgba(255, 255, 255, 0.02);
+      }
+
+      .site-header {
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        background: rgba(7, 17, 31, 0.62);
+        backdrop-filter: blur(16px);
+        border-bottom: 1px solid rgba(148, 163, 184, 0.08);
+      }
+
+      .nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 24px;
+        min-height: 78px;
+      }
+
+      .brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        font-weight: 800;
+        letter-spacing: 0.04em;
+      }
+
+      .brand-mark {
+        width: 38px;
+        height: 38px;
+        border-radius: 12px;
+        display: grid;
+        place-items: center;
+        background: linear-gradient(135deg, var(--primary), var(--primary-2));
+        box-shadow: 0 18px 35px rgba(124, 58, 237, 0.35);
+        font-size: 0.9rem;
+      }
+
+      .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 28px;
+        color: var(--muted);
+        font-size: 0.96rem;
+      }
+
+      .nav-links a {
+        transition: color 0.2s ease;
+      }
+
+      .nav-links a:hover {
+        color: var(--text);
+      }
+
+      .nav-actions {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+      }
+
+      .theme-toggle {
+        width: 46px;
+        height: 46px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid var(--line);
+        color: var(--text);
+        display: grid;
+        place-items: center;
+        cursor: pointer;
+        font-size: 1.1rem;
+      }
+
+      .hero {
+        padding: 72px 0 54px;
+      }
+
+      .hero-grid {
+        display: grid;
+        grid-template-columns: 1.08fr 0.92fr;
+        gap: 42px;
+        align-items: center;
+      }
+
+      .hero-copy .lead {
+        max-width: 620px;
+        font-size: 1.08rem;
+        margin-bottom: 28px;
+      }
+
+      .cta-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 16px;
+        margin-bottom: 28px;
+      }
+
+      .mini-stats {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(120px, 1fr));
+        gap: 18px;
+        max-width: 560px;
+      }
+
+      .mini-stat {
+        padding: 18px 16px;
+        border: 1px solid var(--line);
+        border-radius: 20px;
+        background: rgba(255, 255, 255, 0.02);
+      }
+
+      .mini-stat strong {
+        display: block;
+        font-size: 1.5rem;
+        margin-bottom: 6px;
+      }
+
+      .mini-stat span {
+        color: var(--muted);
+        font-size: 0.85rem;
+      }
+
+      .hero-visual {
+        position: relative;
+      }
+
+      .profile-card {
+        position: relative;
+        background: linear-gradient(180deg, rgba(17, 24, 39, 0.94), rgba(9, 14, 22, 0.76));
+        border: 1px solid rgba(148, 163, 184, 0.15);
+        border-radius: 30px;
+        padding: 20px;
+        box-shadow: var(--shadow);
+      }
+
+      .profile-art {
+        min-height: 580px;
+        border-radius: 24px;
+        background:
+          radial-gradient(circle at top, rgba(124, 58, 237, 0.35), transparent 35%),
+          linear-gradient(160deg, rgba(34, 211, 238, 0.18), rgba(124, 58, 237, 0.2)),
+          linear-gradient(135deg, #111827, #0f172a 52%, #111827);
+        position: relative;
+        overflow: hidden;
+        border: 1px solid rgba(148, 163, 184, 0.1);
+      }
+
+      .profile-art::before {
+        content: "";
+        position: absolute;
+        inset: 18% 24% 12% 20%;
+        border-radius: 50% 50% 48% 52%;
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.02));
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        box-shadow: inset 0 0 30px rgba(255, 255, 255, 0.08), 0 30px 60px rgba(7, 17, 31, 0.45);
+      }
+
+      .profile-art::after {
+        content: "";
+        position: absolute;
+        left: 50%;
+        bottom: 18%;
+        width: 52%;
+        height: 38%;
+        transform: translateX(-50%);
+        border-radius: 26% 26% 44% 44%;
+        background: linear-gradient(180deg, rgba(15, 23, 42, 0.7), rgba(17, 24, 39, 0.95));
+        border: 1px solid rgba(148, 163, 184, 0.12);
+      }
+
+      .floating-tag {
+        position: absolute;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        border: 1px solid rgba(148, 163, 184, 0.16);
+        padding: 10px 14px;
+        border-radius: 999px;
+        background: rgba(10, 15, 27, 0.6);
+        box-shadow: var(--shadow);
+        backdrop-filter: blur(10px);
+      }
+
+      .tag-1 {
+        top: 70px;
+        right: -10px;
+      }
+
+      .tag-2 {
+        left: -12px;
+        bottom: 120px;
+      }
+
+      .tag-3 {
+        right: 30px;
+        bottom: 42px;
+      }
+
+      .profile-showcase {
+        display: grid;
+        grid-template-columns: 0.9fr 1.1fr;
+        gap: 28px;
+        align-items: center;
+        margin-top: 22px;
+      }
+
+      .profile-portrait {
+        min-height: 340px;
+        border-radius: 28px;
+        border: 1px solid var(--line);
+        background: linear-gradient(135deg, rgba(124, 58, 237, 0.18), rgba(34, 211, 238, 0.12));
+        display: grid;
+        place-items: center;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .profile-portrait::before {
+        content: "KD";
+        font-size: clamp(4rem, 6vw, 7rem);
+        font-weight: 900;
+        letter-spacing: -0.08em;
+        color: rgba(255, 255, 255, 0.6);
+      }
+
+      .profile-badge {
+        position: absolute;
+        right: 24px;
+        bottom: 18px;
+        background: rgba(7, 17, 31, 0.8);
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        padding: 10px 16px;
+        font-size: 0.8rem;
+        color: var(--text);
+      }
+
+      .about-grid,
+      .experience-grid,
+      .contact-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 32px;
+      }
+
+      .panel {
+        padding: 28px;
+        background: var(--panel);
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+      }
+
+      .about-badges {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 26px;
+      }
+
+      .badge {
+        padding: 8px 12px;
+        border-radius: 999px;
+        border: 1px solid rgba(148, 163, 184, 0.2);
+        background: rgba(255, 255, 255, 0.02);
+        color: var(--text);
+        font-size: 0.85rem;
+      }
+
+      .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(140px, 1fr));
+        gap: 18px;
+      }
+
+      .stat-box {
+        background: rgba(255, 255, 255, 0.02);
+        border: 1px solid var(--line);
+        border-radius: 22px;
+        padding: 20px 18px;
+      }
+
+      .stat-box strong {
+        display: block;
+        font-size: 2rem;
+        margin-bottom: 2px;
+      }
+
+      .skills-grid,
+      .projects-grid,
+      .service-grid,
+      .testimonials-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(220px, 1fr));
+        gap: 22px;
+      }
+
+      .skill-card,
+      .project-card,
+      .service-card,
+      .testimonial-card {
+        background: var(--card);
+        border: 1px solid var(--line);
+        border-radius: 24px;
+        padding: 24px;
+        box-shadow: var(--shadow);
+      }
+
+      .skill-card .icon,
+      .service-card .icon {
+        width: 52px;
+        height: 52px;
+        border-radius: 16px;
+        margin-bottom: 18px;
+        display: grid;
+        place-items: center;
+        background: linear-gradient(135deg, rgba(124, 58, 237, 0.2), rgba(34, 211, 238, 0.18));
+        font-size: 1.4rem;
+      }
+
+      .skill-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 18px;
+      }
+
+      .tag {
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(148, 163, 184, 0.18);
+        border-radius: 999px;
+        padding: 8px 12px;
+        color: var(--muted);
+        font-size: 0.8rem;
+      }
+
+      .timeline {
+        position: relative;
+        padding-left: 28px;
+        margin-top: 6px;
+      }
+
+      .timeline::before {
+        content: "";
+        position: absolute;
+        left: 7px;
+        top: 2px;
+        width: 2px;
+        height: calc(100% - 8px);
+        background: linear-gradient(180deg, var(--primary), rgba(255, 255, 255, 0.12));
+      }
+
+      .timeline-item {
+        position: relative;
+        padding: 0 0 26px 22px;
+      }
+
+      .timeline-item:last-child {
+        padding-bottom: 0;
+      }
+
+      .timeline-item::before {
+        content: "";
+        position: absolute;
+        left: -27px;
+        top: 4px;
+        width: 14px;
+        height: 14px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, var(--primary), var(--primary-2));
+        border: 3px solid rgba(7, 17, 31, 1);
+        box-shadow: 0 0 0 4px rgba(124, 58, 237, 0.12);
+      }
+
+      .timeline-item small {
+        display: inline-block;
+        margin-bottom: 8px;
+        color: var(--primary-2);
+        font-weight: 700;
+      }
+
+      .project-card .meta {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 18px;
+        color: var(--muted);
+        font-size: 0.82rem;
+      }
+
+      .thumb {
+        height: 180px;
+        display: grid;
+        place-items: center;
+        border-radius: 16px;
+        margin-bottom: 18px;
+        background: linear-gradient(135deg, rgba(124, 58, 237, 0.2), rgba(34, 211, 238, 0.18));
+        border: 1px solid rgba(148, 163, 184, 0.1);
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.85);
+      }
+
+      .project-links {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-top: 18px;
+      }
+
+      .service-card ul {
+        padding-left: 18px;
+        margin: 16px 0 0;
+        color: var(--muted);
+      }
+
+      .testimonial-card .quote {
+        font-size: 1.04rem;
+        color: var(--text);
+        margin-bottom: 18px;
+      }
+
+      .person {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+      }
+
+      .avatar {
+        width: 46px;
+        height: 46px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, var(--primary), var(--primary-2));
+        display: grid;
+        place-items: center;
+        font-weight: 700;
+      }
+
+      .contact-card {
+        background: linear-gradient(135deg, rgba(124, 58, 237, 0.18), rgba(34, 211, 238, 0.08));
+      }
+
+      .contact-list {
+        display: grid;
+        gap: 14px;
+        margin-top: 20px;
+      }
+
+      .contact-item {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        padding: 14px 16px;
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        background: rgba(255, 255, 255, 0.02);
+      }
+
+      .contact-item span {
+        color: var(--muted);
+      }
+
+      .email-action {
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+        margin-top: 24px;
+      }
+
+      .email-action .btn {
+        width: fit-content;
+      }
+
+      .helper-text {
+        color: var(--muted);
+        font-size: 0.95rem;
+      }
+
+      .site-footer {
+        padding: 24px 0 42px;
+        border-top: 1px solid rgba(148, 163, 184, 0.12);
+      }
+
+      .footer-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 20px;
+        flex-wrap: wrap;
+      }
+
+      .socials {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        color: var(--muted);
+      }
+
+      .socials a {
+        display: grid;
+        place-items: center;
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(148, 163, 184, 0.14);
+      }
+
+      @media (max-width: 920px) {
+        .hero-grid,
+        .about-grid,
+        .experience-grid,
+        .contact-grid,
+        .skills-grid,
+        .projects-grid,
+        .service-grid,
+        .testimonials-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .nav-links {
+          display: none;
+        }
+
+        .nav-actions .btn {
+          display: none;
+        }
+
+        .profile-art {
+          min-height: 460px;
+        }
+      }
+
+      @media (max-width: 580px) {
+        .section {
+          padding: 76px 0;
+        }
+
+        .mini-stats,
+        .stats-grid,
+        .field-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .cta-row {
+          flex-direction: column;
+          align-items: stretch;
+        }
+
+        .btn {
+          width: 100%;
+        }
+
+        .footer-row {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="matrix-stream" aria-hidden="true">
+      <span style="left: 6%; animation-duration: 14s; animation-delay: 0s;">01010011 01000101 01000011</span>
+      <span style="left: 16%; animation-duration: 11s; animation-delay: 2s;">101011 1100101 010001</span>
+      <span style="left: 26%; animation-duration: 17s; animation-delay: 1s;">1100101 1100100 1110100</span>
+      <span style="left: 36%; animation-duration: 13s; animation-delay: 3s;">01101110 01100101 01110100</span>
+      <span style="left: 46%; animation-duration: 16s; animation-delay: 2.3s;">01011001 01001111 01010101</span>
+      <span style="left: 58%; animation-duration: 12s; animation-delay: 4s;">101000 1101001 01100011</span>
+      <span style="left: 68%; animation-duration: 15s; animation-delay: 1.7s;">01001100 01001001 01001110</span>
+      <span style="left: 78%; animation-duration: 14s; animation-delay: 2.5s;">1100101 01110010 01100101</span>
+      <span style="left: 88%; animation-duration: 18s; animation-delay: 0.8s;">01001000 01000011 01010000</span>
+    </div>
+
+    <div class="page-shell">
+      <header class="site-header">
+      <div class="container nav">
+        <a href="#home" class="brand" aria-label="Home">
+          <span class="brand-mark">KD</span>
+          <span>Kapil Deka</span>
+        </a>
+
+        <nav class="nav-links" aria-label="Main navigation">
+          <a href="#about">About</a>
+          <a href="#skills">Skills</a>
+          <a href="#experience">Experience</a>
+          <a href="#projects">Projects</a>
+          <a href="#contact">Contact</a>
+        </nav>
+
+        <div class="nav-actions">
+          <a href="resume.txt" class="btn secondary" download>Download Resume</a>
+          <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">☀️</button>
+        </div>
+      </div>
+    </header>
+
+    <main id="home">
+      <section class="hero">
+        <div class="container hero-grid">
+          <div class="hero-copy">
+            <div class="eyebrow">Cyber Security • Web Design • Development</div>
+            <h1>
+              Building secure digital experiences with creativity, code, and confidence.
+            </h1>
+            <p class="lead">
+              I’m Kapil Deka, a BCA student specializing in cyber security and web designing, and a programmer and web developer at NIELIT Dibrugarh. I enjoy creating modern, secure, and functional digital solutions that help people and businesses grow with confidence.
+            </p>
+
+            <div class="cta-row">
+              <a href="#projects" class="btn primary">View Projects</a>
+              <a href="#contact" class="btn secondary">Let’s Connect</a>
+            </div>
+
+            <div class="mini-stats">
+              <div class="mini-stat">
+                <strong>100+</strong>
+                <span>Learning goals achieved</span>
+              </div>
+              <div class="mini-stat">
+                <strong>20+</strong>
+                <span>Skill practices</span>
+              </div>
+              <div class="mini-stat">
+                <strong>5+</strong>
+                <span>Core focus areas</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="hero-visual">
+            <div class="profile-card">
+              <div class="profile-art" aria-hidden="true"></div>
+
+              <div class="floating-tag tag-1">Cyber Security</div>
+              <div class="floating-tag tag-2">Web Dev</div>
+              <div class="floating-tag tag-3">Programming</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="about" class="section">
+        <div class="container">
+          <div class="section-header">
+            <div class="eyebrow">About me</div>
+            <h2>Student, developer, and digital problem-solver from Assam.</h2>
+          </div>
+
+          <div class="profile-showcase">
+            <div class="profile-portrait" aria-label="Profile portrait placeholder">
+              <div class="profile-badge">Available for opportunities</div>
+            </div>
+
+            <div class="panel">
+              <p>
+                I’m Kapil Deka from Assam, Baksa, Naokata. I’m pursuing BCA with a strong interest in cyber security, web designing, programming, and modern digital technologies. My work combines technical learning with creative thinking, helping me build websites and digital solutions that are both secure and visually strong.
+              </p>
+              <p>
+                At NIELIT Dibrugarh, I am gaining practical experience in web development and programming while building the foundation for a future career in cyber security and digital innovation. I enjoy learning how systems work, how to protect them, and how to design interfaces that solve real-world problems with clarity and elegance.
+              </p>
+
+              <div class="about-badges">
+                <span class="badge">Cyber Security</span>
+                <span class="badge">Web Design</span>
+                <span class="badge">Programming</span>
+                <span class="badge">Problem Solving</span>
+                <span class="badge">Innovation</span>
+                <span class="badge">Creativity</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="skills" class="section">
+        <div class="container">
+          <div class="section-header">
+            <div class="eyebrow">Skills</div>
+            <h2>My strengths and the skills I’m building for a stronger future.</h2>
+          </div>
+
+          <div class="skills-grid">
+            <article class="skill-card">
+              <div class="icon">✦</div>
+              <h3>Cyber Security</h3>
+              <p>Learning how to protect digital systems, understand vulnerabilities, and improve online security awareness.</p>
+              <div class="skill-list">
+                <span class="tag">Network Security</span>
+                <span class="tag">Ethical Hacking Basics</span>
+                <span class="tag">Security Awareness</span>
+              </div>
+            </article>
+
+            <article class="skill-card">
+              <div class="icon">▣</div>
+              <h3>Web Development</h3>
+              <p>Designing and developing modern websites with responsive layouts, clean structure, and user-friendly interfaces.</p>
+              <div class="skill-list">
+                <span class="tag">HTML</span>
+                <span class="tag">CSS</span>
+                <span class="tag">JavaScript</span>
+                <span class="tag">Responsive Design</span>
+              </div>
+            </article>
+
+            <article class="skill-card">
+              <div class="icon">◎</div>
+              <h3>Programming</h3>
+              <p>Developing problem-solving ability with languages and logic used in practical software and web projects.</p>
+              <div class="skill-list">
+                <span class="tag">Python</span>
+                <span class="tag">C / C++</span>
+                <span class="tag">DBMS</span>
+                <span class="tag">OOP Concepts</span>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="experience" class="section">
+        <div class="container">
+          <div class="section-header">
+            <div class="eyebrow">Experience</div>
+            <h2>Growing through learning, practice, and real digital exposure.</h2>
+          </div>
+
+          <div class="experience-grid">
+            <div class="panel">
+              <h3>Professional journey</h3>
+              <div class="timeline">
+                <div class="timeline-item">
+                  <small>2024 — Present</small>
+                  <h4>Programmer & Web Developer</h4>
+                  <p>Working at NIELIT Dibrugarh, developing interest in programming, website creation, and digital problem solving.</p>
+                </div>
+                <div class="timeline-item">
+                  <small>2023 — Present</small>
+                  <h4>BCA Student – Cyber Security & Web Design</h4>
+                  <p>Studying core IT foundations including web technologies, security basics, and system knowledge needed for modern digital careers.</p>
+                </div>
+                <div class="timeline-item">
+                  <small>Learning Phase</small>
+                  <h4>Self-driven skill development</h4>
+                  <p>Continuously improving in front-end development, secure coding practices, digital communication, and innovation.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="panel">
+              <h3>What I am building in BCA</h3>
+              <p>
+                My BCA journey is focused on creating a strong technical base in cyber security, web technologies, software fundamentals, and real-world digital problem solving. I want my learning to move beyond theory and into confident project execution.
+              </p>
+              <ul>
+                <li>Cyber security fundamentals and digital safety</li>
+                <li>Web design and front-end development</li>
+                <li>Programming logic and software basics</li>
+                <li>Database awareness and system understanding</li>
+                <li>Project building for real portfolio growth</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="projects" class="section">
+        <div class="container">
+          <div class="section-header">
+            <div class="eyebrow">Projects</div>
+            <h2>My work and portfolio identity.</h2>
+          </div>
+
+          <div class="projects-grid">
+            <article class="project-card">
+              <div class="meta">
+                <span>Personal Portfolio</span>
+                <span>2026</span>
+              </div>
+              <div class="thumb">KAPIL'S PORTFOLIO</div>
+              <h3>KAPIL'S PORTFOLIO</h3>
+              <p>A premium personal portfolio website created to showcase my identity as a cyber security student, web designer, programmer, and web developer. It reflects my skill set, learning journey, and professional goals in a clean and modern digital format.</p>
+              <div class="project-links">
+                <a href="#" class="btn secondary">Live Project</a>
+              </div>
+            </article>
+
+            <article class="project-card">
+              <div class="meta">
+                <span>Cyber Security</span>
+                <span>Future</span>
+              </div>
+              <div class="thumb">SECURITY LAB</div>
+              <h3>Security Awareness Project</h3>
+              <p>Planned work focused on understanding online threats, safe browsing habits, network awareness, and practical cyber safety for beginners.</p>
+              <div class="project-links">
+                <a href="#" class="btn secondary">Concept</a>
+              </div>
+            </article>
+
+            <article class="project-card">
+              <div class="meta">
+                <span>Web Design</span>
+                <span>Growth</span>
+              </div>
+              <div class="thumb">WEB SOLUTIONS</div>
+              <h3>Responsive Web Interface</h3>
+              <p>Designing modern and responsive websites with strong visual layout, digital branding, and user-focused presentation.</p>
+              <div class="project-links">
+                <a href="#" class="btn secondary">Portfolio</a>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <div class="section-header">
+            <div class="eyebrow">Brand identity</div>
+            <h2>Professional, strong, and future-focused.</h2>
+          </div>
+
+          <div class="service-grid">
+            <article class="service-card">
+              <div class="icon">◈</div>
+              <h3>Personal Brand</h3>
+              <ul>
+                <li>Secure, modern, and trusted identity</li>
+                <li>Focused on technology and creativity</li>
+                <li>Portfolio designed for growth</li>
+              </ul>
+            </article>
+
+            <article class="service-card">
+              <div class="icon">◇</div>
+              <h3>Web Presence</h3>
+              <ul>
+                <li>Responsive online portfolio</li>
+                <li>Professional digital visibility</li>
+                <li>Skills and projects presented clearly</li>
+              </ul>
+            </article>
+
+            <article class="service-card">
+              <div class="icon">✧</div>
+              <h3>Career Direction</h3>
+              <ul>
+                <li>Cyber security learning path</li>
+                <li>Web development and programming growth</li>
+                <li>Long-term digital career improvement</li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <div class="section-header">
+            <div class="eyebrow">What I bring</div>
+            <h2>Focused values that support my learning and work.</h2>
+          </div>
+
+          <div class="testimonials-grid">
+            <article class="testimonial-card">
+              <div class="quote">
+                “I bring curiosity, discipline, and a strong interest in both digital security and modern web creativity.”
+              </div>
+              <div class="person">
+                <div class="avatar">K</div>
+                <div>
+                  <strong>Kapil Deka</strong><br />
+                  <span>Cyber Security Learner</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="testimonial-card">
+              <div class="quote">
+                “I am building a future around technology, learning, and practical problem solving for real-world digital challenges.”
+              </div>
+              <div class="person">
+                <div class="avatar">W</div>
+                <div>
+                  <strong>Web Developer</strong><br />
+                  <span>Creative Technologist</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="testimonial-card">
+              <div class="quote">
+                “My goal is to combine secure thinking, design ability, and programming skills to create meaningful digital work.”
+              </div>
+              <div class="person">
+                <div class="avatar">P</div>
+                <div>
+                  <strong>Programmer</strong><br />
+                  <span>Future-focused builder</span>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="certificates" class="section">
+        <div class="container">
+          <div class="section-header">
+            <div class="eyebrow">Certificates & Internship</div>
+            <h2>Learning milestones and training experiences.</h2>
+          </div>
+
+          <div class="projects-grid">
+            <article class="project-card">
+              <div class="meta">
+                <span>Training</span>
+                <span>Ongoing</span>
+              </div>
+              <div class="thumb">NIELIT</div>
+              <h3>NIELIT Dibrugarh Training</h3>
+              <p>Hands-on learning and exposure in coding, web development, and digital technology as part of my current professional growth in the IT ecosystem.</p>
+              <div class="project-links">
+                <span class="tag">Web Development</span>
+              </div>
+            </article>
+
+            <article class="project-card">
+              <div class="meta">
+                <span>Skills</span>
+                <span>Focused</span>
+              </div>
+              <div class="thumb">CYBER</div>
+              <h3>Cyber Security Fundamentals</h3>
+              <p>Developing awareness of digital safety, secure behavior, system protection, and the basics of cyber defense strategies.</p>
+              <div class="project-links">
+                <span class="tag">Security Basics</span>
+              </div>
+            </article>
+
+            <article class="project-card">
+              <div class="meta">
+                <span>Learning</span>
+                <span>2025</span>
+              </div>
+              <div class="thumb">WEB</div>
+              <h3>Web Design & Front-End Practice</h3>
+              <p>Building clean interfaces, responsive design understanding, and practical front-end development experience for portfolios and digital products.</p>
+              <div class="project-links">
+                <span class="tag">UI/UX</span>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" class="section">
+        <div class="container">
+          <div class="section-header">
+            <div class="eyebrow">Contact</div>
+            <h2>Let’s connect and build something meaningful together.</h2>
+          </div>
+
+          <div class="contact-grid">
+            <div class="panel contact-card">
+              <h3>Reach out</h3>
+              <p>
+                I’m open to learning opportunities, project collaborations, internships, and creative tech discussions.
+              </p>
+
+              <div class="contact-list">
+                <div class="contact-item">
+                  <strong>Email</strong>
+                  <span>kappusarania@gmail.com</span>
+                </div>
+                <div class="contact-item">
+                  <strong>Phone</strong>
+                  <span>+91 60015 17337</span>
+                </div>
+                <div class="contact-item">
+                  <strong>Location</strong>
+                  <span>Assam, Baksa, Naokata</span>
+                </div>
+                <div class="contact-item">
+                  <strong>GitHub</strong>
+                  <span>Kappu14</span>
+                </div>
+                <div class="contact-item">
+                  <strong>Instagram</strong>
+                  <span>@kapil_xarania_</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="panel">
+              <h3>Direct contact</h3>
+              <p class="helper-text">
+                Reach out directly for internships, collaboration, portfolio discussion, or project opportunities.
+              </p>
+              <div class="email-action">
+                <a href="mailto:kappusarania@gmail.com?subject=Portfolio%20Inquiry" class="btn primary">Email Kapil</a>
+                <a href="https://www.instagram.com/kapil_xarania_" target="_blank" rel="noreferrer" class="btn secondary">Instagram</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-row">
+        <div>
+          <strong>Kapil Deka</strong>
+          <p>© <span id="year"></span> All rights reserved.</p>
+        </div>
+
+        <div class="socials" aria-label="Social links">
+          <a href="https://instagram.com/kapil_xarania_" target="_blank" rel="noreferrer" aria-label="Instagram">IG</a>
+          <a href="https://github.com/Kappu14" target="_blank" rel="noreferrer" aria-label="GitHub">GH</a>
+          <a href="mailto:kappusarania@gmail.com" aria-label="Email">@</a>
+        </div>
+      </div>
+      </footer>
+    </div>
+
+    <script>
+      const toggleButton = document.getElementById("themeToggle");
+      const body = document.body;
+
+      if (toggleButton) {
+        toggleButton.addEventListener("click", () => {
+          body.classList.toggle("light");
+          toggleButton.textContent = body.classList.contains("light") ? "🌙" : "☀️";
+        });
+      }
+
+      document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
+  </body>
+</html>
+ 
