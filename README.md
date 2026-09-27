@@ -1,27 +1,69 @@
-# Kapil Deka Portfolio
+# 🌐 Kapil Sarania — Personal Portfolio
 
-This is a static portfolio website built for GitHub Pages.
+Welcome to my personal portfolio website! 👋
 
-## Files
-- `index.html` — main portfolio page
-- `index-cyber.html` — stronger cyber-security themed variant
-- `resume.txt` — downloadable resume text
+This project showcases my skills, projects, education, and journey as a BCA student and aspiring web developer.
 
-## GitHub Pages setup
-1. Push this project to a GitHub repository.
-2. Open the repository on GitHub.
-3. Go to Settings → Pages.
-4. In Source, choose `Deploy from a branch`.
-5. Select the `main` branch and the root folder `/`.
-6. Save.
-7. GitHub will provide a live URL like:
-   `https://yourusername.github.io/repository-name/`
+## 👨‍💻 About Me
 
-## Important note
-- A static site works without a build step.
-- `index.html` is the default landing page for GitHub Pages.
-- If you want to use the cyber-security version, rename `index-cyber.html` to `index.html` before publishing.
-- Keep the empty `.nojekyll` file to ensure GitHub Pages does not process the site with Jekyll.
+I'm a BCA student interested in:
 
-## Optional improvement
-Replace the placeholder profile section with a real profile image by saving an image in the project folder and updating the profile block in the HTML.
+- 💻 Web Development
+- 🐍 Python Programming
+- 🔐 Cybersecurity
+- 🌐 Modern Web Technologies
+
+I enjoy learning by building practical projects and exploring new technologies.
+
+## 🛠️ Technologies
+
+- HTML
+- CSS
+- JavaScript
+- Python
+- Git & GitHub
+
+## ✨ Features
+
+- 👤 Personal introduction
+- 🛠️ Skills section
+- 🚀 Projects section
+- 🎓 Education information
+- 📄 Resume
+- 📱 Responsive design
+- 🌐 GitHub Pages deployment
+
+## 🚀 Live Website
+
+**Coming soon / Add your GitHub Pages link here**
+
+## 📂 Project Structure
+
+```text
+MY-PORTFOLIO/
+│
+├── index.html
+├── index-cyber.html
+├── index-hacker.html
+├── resume.txt
+├── README.md
+└── .nojekyll
+
+📚 What I'm Learning
+JavaScript
+Python
+Cybersecurity
+Networking
+Data Structures & Algorithms
+🎯 Future Improvements
+Add more projects
+Improve responsive design
+Add animations
+Add dark/light mode
+Add contact form
+Improve accessibility
+👋 Thanks for Visiting
+
+Thanks for checking out my portfolio!
+
+⭐ Feel free to explore the project and follow my development journey.
